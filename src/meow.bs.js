@@ -4,12 +4,14 @@
 
 var windowExists = ( typeof window !== 'undefined' );
 
-console.log(window.navigator.userAgent.indexOf("Firefox"));
+console.log(window.navigator.userAgent);
 
-function agent(key) {
-  return window.navigator.userAgent.indexOf(key);
+var partial_arg = window.navigator.userAgent;
+
+function checkIndexOf(param) {
+  return param.indexOf(partial_arg);
 }
 
 exports.windowExists = windowExists;
-exports.agent        = agent;
+exports.checkIndexOf = checkIndexOf;
 /* windowExists Not a pure module */

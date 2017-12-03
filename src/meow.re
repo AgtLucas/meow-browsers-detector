@@ -1,8 +1,13 @@
-[@bs.val] external userAgentIndexOf : string => string = "window.navigator.userAgent.indexOf";
+[@bs.val] external userAgent : string = "window.navigator.userAgent";
 let windowExists: bool = [%bs.raw {| typeof window !== 'undefined' |}];
 
-Js.log(userAgentIndexOf("Firefox"));
+Js.log(userAgent);
 
-let agent = (key) => {
-  userAgentIndexOf(key);
-};
+type browsers =
+  | Firefox
+  | Safari
+  | Chrome
+  | Opera
+  | IE;
+
+let checkIndexOf = Js.String.indexOf(userAgent);
